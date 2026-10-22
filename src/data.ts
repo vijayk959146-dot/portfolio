@@ -1,0 +1,20 @@
+export const portfolio = {
+  name: 'Vijayakumar Police Patil',
+  firstName: 'Vijayakumar',
+  role: 'Engineering Student',
+  college: 'RV College of Engineering',
+  semester: '3rd semester',
+  location: 'Bengaluru, India',
+  availability: 'Open to learning, collaboration, and opportunities',
+  email: 'vijayk959146@gmail.com',
+  photo: '/vijay-profile.jpeg',
+  github: 'https://github.com/vijayk959146-dot',
+  linkedin: 'https://www.linkedin.com/in/vijay-kumar-689820380',
+  leetcode: 'https://leetcode.com/u/vijayakumarpp/',
+  bio: 'I’m Vijayakumar Police Patil, a third-semester student at RV College of Engineering. I’m building my skills in technology and enjoy learning by exploring ideas, solving problems, and creating things that are useful.',
+  skills: ['DSA problem solving', 'Data structures & algorithms', 'Programming fundamentals', 'Software development', 'Learning by building', 'Team collaboration'],
+  projects: [],
+  timeline: [
+    { year: 'NOW', title: 'Engineering · 3rd semester', place: 'RV College of Engineering · Bengaluru', text: 'Developing a strong foundation in engineering and exploring where technology can lead.' },
+  ],
+}
