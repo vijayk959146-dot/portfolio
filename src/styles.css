@@ -19,43 +19,91 @@
 @media(max-width:640px){.case-study{grid-template-columns:1fr;gap:18px;margin-top:25px}.project-action{margin-top:17px}.brand{max-width:72%;font-size:10px}.brand small{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.cursor{display:none!important}.project-image img{transition:none!important}}
 
-/* Modern Technical Engineering Cards */
-.tech-project-grid{display:grid;grid-template-columns:1fr;gap:36px;margin-bottom:64px}
-.tech-card{background:#181817;border:1px solid #2e2d2a;border-radius:4px;padding:36px;position:relative;transition:border-color .3s,box-shadow .3s,transform .3s;box-shadow:0 8px 30px rgba(0,0,0,0.18)}
-.tech-card:hover{border-color:#4d4a44;transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.32)}
-.tech-card-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid #262522;margin-bottom:24px;flex-wrap:wrap;gap:12px}
-.tech-card-top-left{display:flex;align-items:center;gap:16px}
-.tech-index{font:11px/1 var(--mono);color:var(--coral);font-weight:700;letter-spacing:.1em;padding:4px 8px;border:1px solid rgba(239,112,87,0.3);border-radius:2px;background:rgba(239,112,87,0.06)}
-.tech-repo-tag{display:inline-flex;align-items:center;gap:6px;font:11px var(--mono);color:#9e9a91;letter-spacing:.04em}
-.tech-status-badge{display:inline-flex;align-items:center;gap:8px;font:10px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#dedad2;padding:4px 10px;border-radius:20px;background:#20201e;border:1px solid #33322e}
+/* =========================================================
+   Unified Single-Slide Engineering Inspector Workbench
+   ========================================================= */
+.slide-inspector-container{background:#161615;border:1px solid #2a2926;border-radius:6px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,0.28);margin-bottom:60px}
+
+/* Top Navigation Toolbar */
+.inspector-toolbar{display:flex;align-items:center;justify-content:space-between;background:#1b1b1a;border-bottom:1px solid #2a2926;padding:12px 20px;gap:16px;flex-wrap:wrap}
+.repo-pill-tabs{display:flex;align-items:center;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.repo-pill-tabs::-webkit-scrollbar{display:none}
+.repo-tab-btn{display:inline-flex;align-items:center;gap:8px;background:#232220;border:1px solid #34332f;color:#9f9b91;font:11px var(--mono);padding:7px 14px;border-radius:4px;cursor:pointer;white-space:nowrap;transition:all .2s}
+.repo-tab-btn:hover{background:#2a2926;color:#dedad2;border-color:#484640}
+.repo-tab-btn.active{background:var(--paper);color:#111110;border-color:var(--paper);font-weight:600}
+.tab-idx{font-size:9px;opacity:.7}
+.repo-tab-btn.active .tab-idx{color:var(--coral)}
+
+/* Slide Controls */
+.inspector-nav-controls{display:flex;align-items:center;gap:16px}
+.slide-counter-badge{font:12px var(--mono);color:#969288;display:flex;align-items:center;gap:4px}
+.slide-counter-badge .curr-count{color:var(--coral);font-weight:700}
+.slide-counter-badge .sep{opacity:.4}
+.nav-arrow-btns{display:flex;gap:6px}
+.slide-arrow-btn{width:34px;height:34px;display:grid;place-items:center;background:#242321;border:1px solid #363531;color:#d5d0c6;border-radius:4px;cursor:pointer;transition:all .2s}
+.slide-arrow-btn:hover{background:var(--coral);color:#fff;border-color:var(--coral)}
+
+/* Active Workbench Slide */
+.active-slide-workbench{padding:40px;animation:slideFadeIn .3s ease-out}
+@keyframes slideFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Slide Meta Header */
+.slide-meta-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid #262522;margin-bottom:30px;flex-wrap:wrap;gap:14px}
+.meta-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.repo-badge-indicator{display:inline-flex;align-items:center;gap:8px;font:12px/1 var(--mono);color:#dedad2;background:#201f1d;border:1px solid #363430;padding:6px 12px;border-radius:3px}
+.repo-badge-indicator svg{color:var(--coral)}
+.slide-category-tag{font:10px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--coral)}
+.tech-status-badge{display:inline-flex;align-items:center;gap:8px;font:10px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#dedad2;padding:5px 12px;border-radius:20px;background:#20201e;border:1px solid #33322e}
 .status-indicator-dot{width:6px;height:6px;border-radius:50%;background:var(--badge-accent,#ef7057);box-shadow:0 0 8px var(--badge-accent,#ef7057)}
-.tech-category-row{margin-bottom:8px}
-.tech-cat-label{font:10px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--coral)}
-.tech-title{font-size:clamp(22px,2.4vw,32px);line-height:1.2;letter-spacing:-.04em;margin:0 0 18px;color:#eee8df;font-weight:600}
-.tech-arch-box{background:#131312;border-left:3px solid var(--coral);border-radius:0 3px 3px 0;padding:12px 18px;margin-bottom:18px}
-.arch-label{display:inline-flex;align-items:center;gap:6px;font:9px var(--mono);letter-spacing:.09em;color:#9b978f;text-transform:uppercase;margin-bottom:4px}
-.arch-text{font:12px/1.6 var(--mono);color:#dedad2;margin:0}
-.tech-desc{font-size:13px;line-height:1.8;color:#a8a39a;margin:0 0 20px;max-width:900px}
-.tech-features-block{background:#141413;border:1px solid #252422;border-radius:4px;padding:18px 20px;margin-bottom:20px}
-.features-label{display:inline-flex;align-items:center;gap:6px;font:9px var(--mono);letter-spacing:.1em;color:#938f87;text-transform:uppercase;margin-bottom:12px}
-.features-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 24px}
-.features-list li{font-size:12px;line-height:1.6;color:#c9c4ba;position:relative;padding-left:16px}
-.features-list li:before{content:'›';position:absolute;left:0;color:var(--coral);font-weight:bold;font-size:14px;line-height:1.2}
-.tech-spec-bar{padding:10px 14px;background:#1b1b1a;border-left:1px dashed #3e3c37;font:11px/1.5 var(--mono);color:#99948a;margin-bottom:20px}
-.tech-stack-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
-.tech-pill{font:10px var(--mono);letter-spacing:.03em;color:#d5d0c6;background:#222220;border:1px solid #363531;padding:5px 12px;border-radius:3px}
-.tech-card-footer{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid #262522;flex-wrap:wrap}
-.tech-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;font:11px var(--mono);text-transform:uppercase;letter-spacing:.06em;border-radius:3px;transition:all .25s;text-decoration:none}
+
+/* Slide Content Layout */
+.slide-content-layout{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;margin-bottom:36px}
+.slide-project-title{font-size:clamp(26px,2.8vw,38px);line-height:1.15;letter-spacing:-.045em;margin:0 0 22px;color:#eee8df;font-weight:600}
+.slide-arch-callout{background:#111110;border-left:3px solid var(--coral);border-radius:0 4px 4px 0;padding:14px 20px;margin-bottom:22px}
+.arch-header-tag{display:inline-flex;align-items:center;gap:7px;font:9px var(--mono);letter-spacing:.1em;color:#9b978f;text-transform:uppercase;margin-bottom:6px}
+.arch-header-tag svg{color:var(--coral)}
+.arch-summary{font:12px/1.6 var(--mono);color:#e2ded6;margin:0}
+.slide-narrative{font-size:14px;line-height:1.85;color:#aaa59c;margin:0 0 24px}
+.slide-spec-strip{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#1b1b19;border-left:2px solid #3f3d38;font:11px/1.5 var(--mono);color:#9f9b91;border-radius:0 3px 3px 0}
+.slide-spec-strip svg{color:var(--coral);flex-shrink:0}
+
+/* Inspect Column Boxes */
+.slide-box{background:#111110;border:1px solid #242320;border-radius:4px;padding:20px;margin-bottom:20px}
+.slide-box:last-child{margin-bottom:0}
+.box-header{display:flex;align-items:center;gap:8px;font:9px var(--mono);letter-spacing:.1em;color:#9e9a91;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #201f1d}
+.box-header svg{color:var(--coral)}
+.capability-items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.capability-items li{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.6;color:#c9c4ba}
+.check-icon{color:var(--coral);flex-shrink:0;margin-top:3px}
+.slide-stack-pills{display:flex;flex-wrap:wrap;gap:8px}
+.slide-pill{font:10px var(--mono);letter-spacing:.03em;color:#d5d0c6;background:#1e1d1b;border:1px solid #33322e;padding:5px 12px;border-radius:3px}
+
+/* Slide Action Bar */
+.slide-action-bar{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid #242320;flex-wrap:wrap;gap:18px}
+.slide-action-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.tech-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;font:11px var(--mono);text-transform:uppercase;letter-spacing:.06em;border-radius:3px;transition:all .25s;text-decoration:none}
 .tech-btn.primary{background:var(--paper);color:#111110;font-weight:600}
 .tech-btn.primary:hover{background:var(--coral);color:#fff}
 .tech-btn.secondary{background:transparent;color:#bbb6ad;border:1px solid #3d3b36}
 .tech-btn.secondary:hover{border-color:var(--coral);color:var(--coral)}
 
-@media(max-width:768px){
-  .tech-card{padding:22px}
-  .tech-title{font-size:20px}
-  .features-list{grid-template-columns:1fr}
-  .tech-card-footer{flex-direction:column;align-items:stretch}
-  .tech-btn{justify-content:center}
+/* Dot Indicators */
+.slide-dots-indicator{display:flex;align-items:center;gap:8px}
+.dot-indicator{width:10px;height:10px;border-radius:50%;background:#2e2d2a;border:0;cursor:pointer;padding:0;transition:all .25s}
+.dot-indicator.active{background:var(--coral);width:26px;border-radius:10px}
+
+@media(max-width:960px){
+  .slide-content-layout{grid-template-columns:1fr;gap:28px}
+  .active-slide-workbench{padding:28px}
 }
+@media(max-width:640px){
+  .inspector-toolbar{flex-direction:column;align-items:stretch}
+  .inspector-nav-controls{justify-content:space-between}
+  .active-slide-workbench{padding:20px}
+  .slide-action-bar{flex-direction:column;align-items:stretch}
+  .slide-action-links{flex-direction:column}
+  .tech-btn{justify-content:center}
+  .slide-dots-indicator{justify-content:center}
+}
+
 

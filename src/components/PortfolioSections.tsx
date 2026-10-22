@@ -1,85 +1,199 @@
-import { ArrowDownRight, ArrowUpRight, Asterisk, Code2, ExternalLink, GitBranch, Github, Layers, Linkedin, Terminal } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowLeft, ArrowRight, ArrowDownRight, ArrowUpRight, Asterisk, Code2, ExternalLink, GitBranch, Github, Layers, Linkedin, Terminal, CheckCircle2, Cpu } from 'lucide-react'
 import { portfolio } from '../data'
 
 export function ProjectsSection() {
-  return <section className="work section-pad" id="work"><div className="wrap">
-    <div className="section-head" data-reveal>
-      <div className="section-label"><span>02</span> / ENGINEERING REPOSITORIES</div>
-      <p>Technical artifacts,<br />architectures & systems.</p>
-      <a className="text-link" href={portfolio.github} target="_blank" rel="noreferrer">
-        GitHub Profile <Github size={14} style={{ display: 'inline', marginLeft: 4 }} /> <ArrowUpRight size={15} />
-      </a>
-    </div>
+  const [activeIndex, setActiveIndex] = useState(0)
+  const currentProject = portfolio.projects[activeIndex]
 
-    <div className="tech-project-grid">
-      {portfolio.projects.map((project) => (
-        <article className="tech-card" key={project.number} data-reveal>
-          <div className="tech-card-header">
-            <div className="tech-card-top-left">
-              <span className="tech-index">{project.number}</span>
-              <span className="tech-repo-tag"><GitBranch size={12} /> {project.repoName}</span>
-            </div>
-            <div className="tech-status-badge" style={{ '--badge-accent': project.badgeColor } as React.CSSProperties}>
-              <span className="status-indicator-dot" />
-              {project.status}
-            </div>
-          </div>
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % portfolio.projects.length)
+  }
 
-          <div className="tech-card-body">
-            <div className="tech-category-row">
-              <span className="tech-cat-label">{project.category}</span>
-            </div>
-            <h3 className="tech-title">{project.name}</h3>
-            
-            <div className="tech-arch-box">
-              <span className="arch-label"><Layers size={12} /> ARCHITECTURE PATTERN</span>
-              <p className="arch-text">{project.architecture}</p>
-            </div>
+  const prevSlide = () => {
+    setActiveIndex((prev) => (prev - 1 + portfolio.projects.length) % portfolio.projects.length)
+  }
 
-            <p className="tech-desc">{project.description}</p>
+  return (
+    <section className="work section-pad" id="work">
+      <div className="wrap">
+        <div className="section-head" data-reveal>
+          <div className="section-label"><span>02</span> / ENGINEERING REPOSITORY INSPECTOR</div>
+          <p>Single-slide terminal.<br />Inspect architectures & systems.</p>
+          <a className="text-link" href={portfolio.github} target="_blank" rel="noreferrer">
+            All Repositories <Github size={14} style={{ display: 'inline', marginLeft: 4 }} /> <ArrowUpRight size={15} />
+          </a>
+        </div>
 
-            <div className="tech-features-block">
-              <span className="features-label"><Terminal size={12} /> KEY CAPABILITIES</span>
-              <ul className="features-list">
-                {project.keyFeatures.map((feat, idx) => (
-                  <li key={idx}>{feat}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="tech-spec-bar">
-              <span className="spec-note">{project.systemSpec}</span>
-            </div>
-
-            <div className="tech-stack-row">
-              {project.techStack.map((tech) => (
-                <span className="tech-pill" key={tech}>{tech}</span>
+        {/* Unified Slide Workbench Container */}
+        <div className="slide-inspector-container" data-reveal>
+          {/* Top Bar / Navigation Toolbar */}
+          <div className="inspector-toolbar">
+            <div className="repo-pill-tabs" role="tablist" aria-label="Repository Slides">
+              {portfolio.projects.map((project, idx) => (
+                <button
+                  key={project.number}
+                  role="tab"
+                  aria-selected={idx === activeIndex}
+                  className={`repo-tab-btn ${idx === activeIndex ? 'active' : ''}`}
+                  onClick={() => setActiveIndex(idx)}
+                >
+                  <span className="tab-idx">0{idx + 1}</span>
+                  <span className="tab-name">{project.repoName}</span>
+                </button>
               ))}
             </div>
+
+            {/* Slider Controls */}
+            <div className="inspector-nav-controls">
+              <span className="slide-counter-badge">
+                <span className="curr-count">0{activeIndex + 1}</span>
+                <span className="sep">/</span>
+                <span className="total-count">0{portfolio.projects.length}</span>
+              </span>
+              <div className="nav-arrow-btns">
+                <button
+                  className="slide-arrow-btn"
+                  onClick={prevSlide}
+                  aria-label="Previous repository slide"
+                  title="Previous repo"
+                >
+                  <ArrowLeft size={16} />
+                </button>
+                <button
+                  className="slide-arrow-btn"
+                  onClick={nextSlide}
+                  aria-label="Next repository slide"
+                  title="Next repo"
+                >
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="tech-card-footer">
-            <a className="tech-btn primary" href={project.url} target="_blank" rel="noopener noreferrer">
-              <Github size={15} />
-              <span>Inspect Source</span>
-              <ArrowUpRight size={14} />
-            </a>
-            {project.liveDemoUrl && (
-              <a className="tech-btn secondary" href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink size={14} />
-                <span>Live Deployment</span>
-              </a>
-            )}
-          </div>
-        </article>
-      ))}
-    </div>
+          {/* Active Single Slide Body */}
+          <div className="active-slide-workbench" key={currentProject.number}>
+            {/* Slide Header */}
+            <div className="slide-meta-header">
+              <div className="meta-left">
+                <div className="repo-badge-indicator">
+                  <GitBranch size={14} />
+                  <span>{currentProject.repoName}</span>
+                </div>
+                <span className="slide-category-tag">{currentProject.category}</span>
+              </div>
+              <div
+                className="tech-status-badge"
+                style={{ '--badge-accent': currentProject.badgeColor } as React.CSSProperties}
+              >
+                <span className="status-indicator-dot" />
+                {currentProject.status}
+              </div>
+            </div>
 
-    <div className="work-foot">
-      <span>All 5 repositories synced live from github.com/vijayk959146-dot</span>
-      <Asterisk size={19} />
-    </div>
-  </div></section>
+            {/* Slide Main Content Grid */}
+            <div className="slide-content-layout">
+              <div className="slide-primary-col">
+                <h3 className="slide-project-title">{currentProject.name}</h3>
+
+                <div className="slide-arch-callout">
+                  <div className="arch-header-tag">
+                    <Layers size={13} />
+                    <span>SYSTEM ARCHITECTURE PATTERN</span>
+                  </div>
+                  <p className="arch-summary">{currentProject.architecture}</p>
+                </div>
+
+                <p className="slide-narrative">{currentProject.description}</p>
+
+                <div className="slide-spec-strip">
+                  <Cpu size={13} />
+                  <span>{currentProject.systemSpec}</span>
+                </div>
+              </div>
+
+              {/* Slide Secondary / Inspect Column */}
+              <div className="slide-inspect-col">
+                <div className="slide-box capability-box">
+                  <div className="box-header">
+                    <Terminal size={13} />
+                    <span>CORE CAPABILITIES & EXECUTION</span>
+                  </div>
+                  <ul className="capability-items">
+                    {currentProject.keyFeatures.map((feat, i) => (
+                      <li key={i}>
+                        <CheckCircle2 size={13} className="check-icon" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="slide-box stack-box">
+                  <div className="box-header">
+                    <Code2 size={13} />
+                    <span>TECHNOLOGY STACK</span>
+                  </div>
+                  <div className="slide-stack-pills">
+                    {currentProject.techStack.map((tech) => (
+                      <span className="slide-pill" key={tech}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Slide Action Bar */}
+            <div className="slide-action-bar">
+              <div className="slide-action-links">
+                <a
+                  className="tech-btn primary"
+                  href={currentProject.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github size={15} />
+                  <span>Inspect Code on GitHub</span>
+                  <ArrowUpRight size={14} />
+                </a>
+                {currentProject.liveDemoUrl && (
+                  <a
+                    className="tech-btn secondary"
+                    href={currentProject.liveDemoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink size={14} />
+                    <span>Live Deployment URL</span>
+                    <ArrowUpRight size={14} />
+                  </a>
+                )}
+              </div>
+
+              <div className="slide-dots-indicator">
+                {portfolio.projects.map((p, idx) => (
+                  <button
+                    key={p.number}
+                    className={`dot-indicator ${idx === activeIndex ? 'active' : ''}`}
+                    onClick={() => setActiveIndex(idx)}
+                    aria-label={`Jump to repository slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="work-foot">
+          <span>Synced live with github.com/vijayk959146-dot · 5 public repositories indexed</span>
+          <Asterisk size={19} />
+        </div>
+      </div>
+    </section>
+  )
 }
 
 export function LearningSection() {
