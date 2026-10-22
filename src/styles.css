@@ -4,3 +4,17 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.hero-art{transform:none!important}}
 
 .profile-photo{width:100%;max-width:190px;aspect-ratio:4/5;object-fit:cover;object-position:center 28%;display:block;margin:0 auto 18px;filter:saturate(.86)}.contact-links{display:flex;gap:28px;flex-wrap:wrap}
+
+/* Keyboard access and the expanded featured-work case study. */
+:focus-visible{outline:2px solid var(--coral);outline-offset:5px;border-radius:3px}
+.skip-link{position:fixed;z-index:1100;top:12px;left:12px;padding:12px 16px;background:var(--paper);color:#111;transform:translateY(-160%);font:12px var(--mono)}
+.skip-link:focus{transform:translateY(0)}
+.project{display:block}
+.project-action{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:11px 0;border-bottom:1px solid #817b71;font:11px var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.project-action:hover{color:#8d392a}
+.case-study{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:34px;padding-top:24px;border-top:1px solid #c9c3b9}
+.case-study p{max-width:300px;margin:10px 0 0;color:#68665f;font-size:12px;line-height:1.8}
+.project-image img{background:var(--project-color)}
+.contact-links .email-link{min-height:44px}
+@media(max-width:640px){.case-study{grid-template-columns:1fr;gap:18px;margin-top:25px}.project-action{margin-top:17px}.brand{max-width:72%;font-size:10px}.brand small{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.cursor{display:none!important}.project-image img{transition:none!important}}

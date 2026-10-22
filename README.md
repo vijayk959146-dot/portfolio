@@ -15,6 +15,10 @@ Run `npm run build` to type-check and create the production site in `dist/`. Run
 
 ## Deploy
 
+### GitHub Pages
+
+Pushing to `main` builds and deploys the site to [https://vijayk959146-dot.github.io/portfolio/](https://vijayk959146-dot.github.io/portfolio/) with GitHub Actions. In the repository’s **Settings → Pages**, select **GitHub Actions** as the build and deployment source once.
+
 ### Vercel
 
 Import the repository in Vercel. Use `npm run build` as the build command and `dist` as the output directory. Vite is detected automatically.
