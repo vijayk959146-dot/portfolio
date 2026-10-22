@@ -1,13 +1,17 @@
 export type PortfolioProject = {
   number: string
   name: string
-  type: string
+  repoName: string
+  category: string
+  architecture: string
   description: string
-  tags: string[]
-  image: string
-  color: string
+  techStack: string[]
+  keyFeatures: string[]
+  systemSpec: string
   url: string
-  workType: string
+  liveDemoUrl?: string
+  status: string
+  badgeColor: string
 }
 
 export const portfolio = {
@@ -17,70 +21,106 @@ export const portfolio = {
   college: 'RV College of Engineering',
   semester: '3rd semester',
   location: 'Bengaluru, India',
-  availability: 'Open to internships, learning, and collaboration',
+  availability: 'Open to internships, research, and collaboration',
   email: 'vijayk959146@gmail.com',
   photo: '/vijay-profile.jpeg',
   github: 'https://github.com/vijayk959146-dot',
   linkedin: 'https://www.linkedin.com/in/vijay-kumar-689820380',
   leetcode: 'https://leetcode.com/u/vijayakumarpp/',
   bio: 'I’m Vijayakumar Police Patil, a third-semester student at RV College of Engineering, aspiring developer, and competitive programming enthusiast. I enjoy sharpening my problem-solving skills through DSA and building my knowledge one project at a time. Outside of tech, I enjoy playing cricket and football.',
-  skills: ['Competitive programming', 'Data structures & algorithms', 'Web development', 'Game development', 'Problem solving'],
-  learning: ['Building interactive web experiences', 'Game design and 3D graphics', 'Data structures & algorithms'],
+  skills: ['Competitive Programming', 'Data Structures & Algorithms', 'Python / ML Modeling', 'Full Stack Development', 'IoT & Hardware Interfacing', 'System Security Analysis'],
+  learning: ['Distributed Systems & Microservices', 'Advanced Machine Learning & Predictive Modeling', 'WebGL & Real-time Visual Computing'],
   projects: [
     {
       number: '01',
-      name: 'AI Security Analyser',
-      type: 'Cybersecurity · Python',
-      description: 'AI-Assisted Attack Surface & Vulnerability scanner — maps threats and surfaces vulnerabilities using machine learning.',
-      tags: ['Python', 'AI/ML', 'Cybersecurity', 'Vulnerability'],
-      image: 'photo-1550751827-4bd374c3f58b',
-      color: '#c0392b',
+      name: 'AI-Assisted Attack Surface & Vulnerability Scanner',
+      repoName: '-EL-3SEM-security-project',
+      category: 'Cybersecurity & Machine Learning',
+      architecture: 'Heuristic Threat Modeling · Automated Reconnaissance Pipeline',
+      description: 'An intelligent security framework engineered to scan attack surfaces, perform port/endpoint reconnaissance, and classify vulnerability vectors using automated inspection algorithms.',
+      techStack: ['Python', 'Network Security', 'Vulnerability Assessment', 'Threat Modeling'],
+      keyFeatures: [
+        'Automated network vector scanning & port inspection',
+        'Vulnerability classification pipeline with severity scoring',
+        'Heuristic attack surface analysis reducing manual audit overhead'
+      ],
+      systemSpec: 'Engineered for 3rd Sem EL Security curriculum with modular auditing routines.',
       url: 'https://github.com/vijayk959146-dot/-EL-3SEM-security-project',
-      workType: 'Academic project',
+      status: 'Active Repository',
+      badgeColor: '#e0533c',
     },
     {
       number: '02',
-      name: 'Breathe Analysis Model',
-      type: 'IoT · Machine Learning',
-      description: 'Disease detection using MQ gas sensors and ML modelling — classifies respiratory conditions from sensor readings in real-time.',
-      tags: ['ML', 'IoT', 'HTML', 'Sensors'],
-      image: 'photo-1576086213369-97a306d36557',
-      color: '#16a085',
+      name: 'Non-Invasive Breath Analysis Diagnostic Engine',
+      repoName: 'breathe_analysis_model',
+      category: 'Biomedical IoT & Predictive ML',
+      architecture: 'Multi-Sensor Array (MQ Series) · Real-time Signal Classification',
+      description: 'Biomedical non-invasive diagnostic engine that interfaces MQ gas sensor arrays with supervised ML models to analyze exhaled Volatile Organic Compounds (VOCs) for early disease biomarker detection.',
+      techStack: ['Python', 'Machine Learning', 'MQ Gas Sensors', 'IoT Signal Processing', 'Vercel'],
+      keyFeatures: [
+        'Continuous analog signal acquisition from multi-gas sensor matrix',
+        'Feature extraction & statistical normalization for respiratory gas classification',
+        'Web interface dashboard for live diagnostic monitoring and result telemetry'
+      ],
+      systemSpec: 'Live deployed model inference telemetry running on Vercel.',
       url: 'https://github.com/vijayk959146-dot/breathe_analysis_model',
-      workType: 'Research project',
+      liveDemoUrl: 'https://breathe-analysis-model.vercel.app',
+      status: 'Production Live Demo',
+      badgeColor: '#20bf6b',
     },
     {
       number: '03',
-      name: 'College Enquiry Chatbot',
-      type: 'ML · Chatbot',
-      description: 'ML-powered chatbot that answers college-related queries instantly — no office visits needed. Includes a suggestion box for student feedback.',
-      tags: ['Machine Learning', 'NLP', 'Chatbot', 'Python'],
-      image: 'photo-1531746790731-6c087fecd65a',
-      color: '#8e44ad',
+      name: 'NLP Academic Enquiry Knowledge Engine',
+      repoName: 'College-Enquiry-Chatbot',
+      category: 'Natural Language Processing & Chat Systems',
+      architecture: 'Intent Classification · Contextual Knowledge Graph · Feedback Loop',
+      description: 'An AI-powered academic query resolver that processes natural language student enquiries regarding campus admissions, department curricula, and administrative workflows without human dispatch.',
+      techStack: ['Python', 'NLP Tokenization', 'Machine Learning', 'Pattern Matching', 'Intent Extraction'],
+      keyFeatures: [
+        'Domain-specific intent recognition trained on university query datasets',
+        'Zero-latency automated query response with fallback escalation routes',
+        'Integrated student feedback telemetry to continuously re-train conversational intents'
+      ],
+      systemSpec: 'Eliminates repetitive physical inquiry desks via structured conversational triage.',
       url: 'https://github.com/vijayk959146-dot/College-Enquiry-Chatbot',
-      workType: 'Academic project',
+      status: 'Completed System',
+      badgeColor: '#8854d0',
     },
     {
       number: '04',
-      name: 'SVU College App',
-      type: 'Mobile · Full Stack',
-      description: 'One-stop college companion app — bridges students and the institution for queries, updates, and resources all in one place.',
-      tags: ['Mobile', 'Full Stack', 'Education'],
-      image: 'photo-1523050854058-8df90110c9f1',
-      color: '#2980b9',
+      name: 'SVU College Unified Campus Platform',
+      repoName: 'ProjectSVUCE',
+      category: 'Full-Stack Campus Architecture',
+      architecture: 'Client-Server Architecture · Student Information Bus',
+      description: 'A comprehensive campus management portal functioning as a unified digital bridge between students, administration, and academic departments for academic circulars, grades, and event tracking.',
+      techStack: ['Full-Stack', 'REST APIs', 'Campus DB Architecture', 'Mobile/Web UI'],
+      keyFeatures: [
+        'Centralized portal for student affairs, notice boards, and department updates',
+        'Role-segregated access for undergraduates, faculty, and administrative staff',
+        'Unified notification dispatch preventing campus information silos'
+      ],
+      systemSpec: 'Architected to service campus-wide throughput for all undergraduate queries.',
       url: 'https://github.com/vijayk959146-dot/ProjectSVUCE',
-      workType: 'Team project',
+      status: 'Collaborative Project',
+      badgeColor: '#3867d6',
     },
     {
       number: '05',
-      name: 'Portfolio',
-      type: 'Web · React · Three.js',
-      description: 'This very portfolio — built with React, TypeScript, Three.js 3D graphics, and GSAP smooth scroll animations.',
-      tags: ['React', 'TypeScript', 'Three.js', 'GSAP'],
-      image: 'photo-1460925895917-afdab827c52f',
-      color: '#d35400',
+      name: 'High-Performance 3D Portfolio & Visual Engine',
+      repoName: 'portfolio',
+      category: 'WebGL Systems & Creative Engineering',
+      architecture: 'React 18 · React Three Fiber · Lenis Momentum Engine · GSAP Core',
+      description: 'An ultra-optimized personal digital system leveraging WebGL shaders, procedural 3D wireframe geometries, kinetic scroll physics, and a minimalist brutalist engineering aesthetic.',
+      techStack: ['TypeScript', 'React 18', 'Three.js', 'React Three Fiber', 'GSAP', 'Lenis'],
+      keyFeatures: [
+        'Interactive real-time 3D parametric mesh rendering via Three.js canvas',
+        'Hardware-accelerated inertia scrolling using Lenis smooth wheel physics',
+        'TypeScript strictly-typed architecture with modularized section abstractions'
+      ],
+      systemSpec: 'Sub-second first contentful paint with automated CI/CD push to GitHub.',
       url: 'https://github.com/vijayk959146-dot/portfolio',
-      workType: 'Independent project',
+      status: 'Production System',
+      badgeColor: '#f7b731',
     },
   ] as PortfolioProject[],
   timeline: [

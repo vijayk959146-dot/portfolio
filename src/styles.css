@@ -18,3 +18,44 @@
 .contact-links .email-link{min-height:44px}
 @media(max-width:640px){.case-study{grid-template-columns:1fr;gap:18px;margin-top:25px}.project-action{margin-top:17px}.brand{max-width:72%;font-size:10px}.brand small{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.cursor{display:none!important}.project-image img{transition:none!important}}
+
+/* Modern Technical Engineering Cards */
+.tech-project-grid{display:grid;grid-template-columns:1fr;gap:36px;margin-bottom:64px}
+.tech-card{background:#181817;border:1px solid #2e2d2a;border-radius:4px;padding:36px;position:relative;transition:border-color .3s,box-shadow .3s,transform .3s;box-shadow:0 8px 30px rgba(0,0,0,0.18)}
+.tech-card:hover{border-color:#4d4a44;transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.32)}
+.tech-card-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid #262522;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.tech-card-top-left{display:flex;align-items:center;gap:16px}
+.tech-index{font:11px/1 var(--mono);color:var(--coral);font-weight:700;letter-spacing:.1em;padding:4px 8px;border:1px solid rgba(239,112,87,0.3);border-radius:2px;background:rgba(239,112,87,0.06)}
+.tech-repo-tag{display:inline-flex;align-items:center;gap:6px;font:11px var(--mono);color:#9e9a91;letter-spacing:.04em}
+.tech-status-badge{display:inline-flex;align-items:center;gap:8px;font:10px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#dedad2;padding:4px 10px;border-radius:20px;background:#20201e;border:1px solid #33322e}
+.status-indicator-dot{width:6px;height:6px;border-radius:50%;background:var(--badge-accent,#ef7057);box-shadow:0 0 8px var(--badge-accent,#ef7057)}
+.tech-category-row{margin-bottom:8px}
+.tech-cat-label{font:10px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--coral)}
+.tech-title{font-size:clamp(22px,2.4vw,32px);line-height:1.2;letter-spacing:-.04em;margin:0 0 18px;color:#eee8df;font-weight:600}
+.tech-arch-box{background:#131312;border-left:3px solid var(--coral);border-radius:0 3px 3px 0;padding:12px 18px;margin-bottom:18px}
+.arch-label{display:inline-flex;align-items:center;gap:6px;font:9px var(--mono);letter-spacing:.09em;color:#9b978f;text-transform:uppercase;margin-bottom:4px}
+.arch-text{font:12px/1.6 var(--mono);color:#dedad2;margin:0}
+.tech-desc{font-size:13px;line-height:1.8;color:#a8a39a;margin:0 0 20px;max-width:900px}
+.tech-features-block{background:#141413;border:1px solid #252422;border-radius:4px;padding:18px 20px;margin-bottom:20px}
+.features-label{display:inline-flex;align-items:center;gap:6px;font:9px var(--mono);letter-spacing:.1em;color:#938f87;text-transform:uppercase;margin-bottom:12px}
+.features-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 24px}
+.features-list li{font-size:12px;line-height:1.6;color:#c9c4ba;position:relative;padding-left:16px}
+.features-list li:before{content:'›';position:absolute;left:0;color:var(--coral);font-weight:bold;font-size:14px;line-height:1.2}
+.tech-spec-bar{padding:10px 14px;background:#1b1b1a;border-left:1px dashed #3e3c37;font:11px/1.5 var(--mono);color:#99948a;margin-bottom:20px}
+.tech-stack-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tech-pill{font:10px var(--mono);letter-spacing:.03em;color:#d5d0c6;background:#222220;border:1px solid #363531;padding:5px 12px;border-radius:3px}
+.tech-card-footer{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid #262522;flex-wrap:wrap}
+.tech-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;font:11px var(--mono);text-transform:uppercase;letter-spacing:.06em;border-radius:3px;transition:all .25s;text-decoration:none}
+.tech-btn.primary{background:var(--paper);color:#111110;font-weight:600}
+.tech-btn.primary:hover{background:var(--coral);color:#fff}
+.tech-btn.secondary{background:transparent;color:#bbb6ad;border:1px solid #3d3b36}
+.tech-btn.secondary:hover{border-color:var(--coral);color:var(--coral)}
+
+@media(max-width:768px){
+  .tech-card{padding:22px}
+  .tech-title{font-size:20px}
+  .features-list{grid-template-columns:1fr}
+  .tech-card-footer{flex-direction:column;align-items:stretch}
+  .tech-btn{justify-content:center}
+}
+

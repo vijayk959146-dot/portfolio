@@ -1,15 +1,84 @@
-import { ArrowDownRight, ArrowUpRight, Asterisk, Code2, Github, Linkedin } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, Asterisk, Code2, ExternalLink, GitBranch, Github, Layers, Linkedin, Terminal } from 'lucide-react'
 import { portfolio } from '../data'
 
 export function ProjectsSection() {
   return <section className="work section-pad" id="work"><div className="wrap">
-    <div className="section-head" data-reveal><div className="section-label"><span>02</span> / FEATURED WORK</div><p>Built from curiosity.<br />Made to solve real problems.</p><a className="text-link" href={portfolio.github} target="_blank" rel="noreferrer">Browse all repositories <ArrowUpRight size={15} /></a></div>
-    <div className="project-list">{portfolio.projects.map((project, i) => <article className={`project project-${i + 1}`} key={project.number} data-reveal style={{ '--project-color': project.color } as React.CSSProperties}>
-      <div className="project-image"><img src={`https://images.unsplash.com/${project.image}?auto=format&fit=crop&w=1400&q=85`} alt={`${project.name} project visual`} loading="lazy" decoding="async" /><span className="image-overlay" /><span className="project-index">{project.number}</span></div>
-      <div className="project-info"><div><span className="eyebrow">{project.type} · {project.workType}</span><h3>{project.name}</h3></div><div className="project-right"><p>{project.description}</p><div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></div>
-      <a className="project-action" href={project.url} target="_blank" rel="noopener noreferrer">View on GitHub <ArrowUpRight size={16} /></a>
-    </article>)}</div>
-    <div className="work-foot"><span>All projects are open source on GitHub</span><Asterisk size={19} /></div>
+    <div className="section-head" data-reveal>
+      <div className="section-label"><span>02</span> / ENGINEERING REPOSITORIES</div>
+      <p>Technical artifacts,<br />architectures & systems.</p>
+      <a className="text-link" href={portfolio.github} target="_blank" rel="noreferrer">
+        GitHub Profile <Github size={14} style={{ display: 'inline', marginLeft: 4 }} /> <ArrowUpRight size={15} />
+      </a>
+    </div>
+
+    <div className="tech-project-grid">
+      {portfolio.projects.map((project) => (
+        <article className="tech-card" key={project.number} data-reveal>
+          <div className="tech-card-header">
+            <div className="tech-card-top-left">
+              <span className="tech-index">{project.number}</span>
+              <span className="tech-repo-tag"><GitBranch size={12} /> {project.repoName}</span>
+            </div>
+            <div className="tech-status-badge" style={{ '--badge-accent': project.badgeColor } as React.CSSProperties}>
+              <span className="status-indicator-dot" />
+              {project.status}
+            </div>
+          </div>
+
+          <div className="tech-card-body">
+            <div className="tech-category-row">
+              <span className="tech-cat-label">{project.category}</span>
+            </div>
+            <h3 className="tech-title">{project.name}</h3>
+            
+            <div className="tech-arch-box">
+              <span className="arch-label"><Layers size={12} /> ARCHITECTURE PATTERN</span>
+              <p className="arch-text">{project.architecture}</p>
+            </div>
+
+            <p className="tech-desc">{project.description}</p>
+
+            <div className="tech-features-block">
+              <span className="features-label"><Terminal size={12} /> KEY CAPABILITIES</span>
+              <ul className="features-list">
+                {project.keyFeatures.map((feat, idx) => (
+                  <li key={idx}>{feat}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="tech-spec-bar">
+              <span className="spec-note">{project.systemSpec}</span>
+            </div>
+
+            <div className="tech-stack-row">
+              {project.techStack.map((tech) => (
+                <span className="tech-pill" key={tech}>{tech}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="tech-card-footer">
+            <a className="tech-btn primary" href={project.url} target="_blank" rel="noopener noreferrer">
+              <Github size={15} />
+              <span>Inspect Source</span>
+              <ArrowUpRight size={14} />
+            </a>
+            {project.liveDemoUrl && (
+              <a className="tech-btn secondary" href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer">
+                <ExternalLink size={14} />
+                <span>Live Deployment</span>
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div className="work-foot">
+      <span>All 5 repositories synced live from github.com/vijayk959146-dot</span>
+      <Asterisk size={19} />
+    </div>
   </div></section>
 }
 
