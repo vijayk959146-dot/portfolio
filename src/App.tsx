@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from '@studio-freight/lenis'
 import Cursor from './components/Cursor'
-import { ContactSection, LearningSection, ProjectsSection, TimelineSection } from './components/PortfolioSections'
+import { ContactSection, LearningSection, ProjectsSection, SuperpowerVendingMachine, TimelineSection } from './components/PortfolioSections'
 import { portfolio } from './data'
 gsap.registerPlugin(ScrollTrigger)
 const Scene = lazy(() => import('./components/Scene'))
@@ -60,7 +60,7 @@ export default function App() {
         <div className="wrap intro-grid"><div className="section-label" data-reveal><span>01</span> / A LITTLE ABOUT ME</div><div className="intro-copy" data-reveal><p className="big-copy">I’m Vijayakumar — an engineering student, aspiring <span>developer</span>, and competitive programming enthusiast.</p><p className="body-copy">{portfolio.bio}</p><a className="text-link" href="#contact">Find me online <ArrowUpRight size={15} /></a></div><div className="intro-aside" data-reveal><img className="profile-photo" src={`${import.meta.env.BASE_URL}${portfolio.photo.replace(/^\//, '')}`} alt="Portrait of Vijayakumar Police Patil" width="190" height="238" fetchPriority="high" /><p>Student at <span>{portfolio.college}</span><br />{portfolio.semester} · {portfolio.location}<br />Cricket · Football</p></div></div>
       </section>
 
-      <div id="main-content" tabIndex={-1}><ProjectsSection /><LearningSection /><TimelineSection /><ContactSection /></div>
+      <div id="main-content" tabIndex={-1}><ProjectsSection /><LearningSection /><SuperpowerVendingMachine /><TimelineSection /><ContactSection /></div>
 
       <footer className="footer wrap"><a className="brand" href="#home"><span className="brand-mark">V<span>✳</span></span><span>{portfolio.name}<br /><small>{portfolio.role}</small></span></a><span>© {new Date().getFullYear()} {portfolio.name}.</span><a href="#home" className="back-top">Back to top <ArrowUpRight size={14} /></a></footer>
     </main>

@@ -13,19 +13,17 @@ A responsive, dark editorial portfolio built with React, Vite, TypeScript, Three
 
 Run `npm run build` to type-check and create the production site in `dist/`. Run `npm run preview` to preview that build locally.
 
-## Deploy
+## Deploy on AWS S3
 
-### GitHub Pages
+The production site is hosted as a static website in Amazon S3.
 
-Pushing to `main` builds and deploys the site to [https://vijayk959146-dot.github.io/portfolio/](https://vijayk959146-dot.github.io/portfolio/) with GitHub Actions. In the repository’s **Settings → Pages**, select **GitHub Actions** as the build and deployment source once.
+1. Run `npm run build`.
+2. Create an S3 bucket in the target AWS region.
+3. Apply `aws/s3-website.json` as the bucket website configuration.
+4. Apply a public-read bucket policy based on `aws/s3-public-read-policy.json`, replacing the bucket name first.
+5. Sync the production bundle: `aws s3 sync dist s3://YOUR_BUCKET --delete`.
 
-### Vercel
-
-Import the repository in Vercel. Use `npm run build` as the build command and `dist` as the output directory. Vite is detected automatically.
-
-### Netlify
-
-Create a new site from the repository. Set the build command to `npm run build` and publish directory to `dist`.
+The S3 website endpoint is HTTP. Use CloudFront with an ACM certificate and a custom domain when HTTPS or a custom domain is required.
 
 ## Notes
 
